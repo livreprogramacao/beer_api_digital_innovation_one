@@ -1,116 +1,295 @@
 {
-	"variables": [],
 	"info": {
+		"_postman_id": "8fc7ed1d-f0a5-4849-b767-b9e8f9485d2a",
 		"name": "Beer API",
-		"_postman_id": "2310266f-1c5d-0bd8-e78f-39e9340d8f95",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"description": "Desenvolvimento de testes unitários para validar uma API REST de gerenciamento de estoques de cerveja.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "List Beers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e40df113-84ed-415d-a061-93fe71af3587",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
-				"url": "http://localhost:7979/api/v1/beers",
 				"method": "GET",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqYXZhaW51c2UiLCJleHAiOjE1OTE2NzAwODgsImlhdCI6MTU5MTY1MjA4OH0.j6nd_s7VFvPVbh4abKrjeaYxgmDCxMxc0O18lPz2juONf3zvKBO7vx-w2WO2b_BJnOl5vAI_5DLg5RrgIZ5WEg",
-						"description": ""
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqYXZhaW51c2UiLCJleHAiOjE1OTE2NzAwODgsImlhdCI6MTU5MTY1MjA4OH0.j6nd_s7VFvPVbh4abKrjeaYxgmDCxMxc0O18lPz2juONf3zvKBO7vx-w2WO2b_BJnOl5vAI_5DLg5RrgIZ5WEg"
 					}
 				],
-				"body": {},
-				"description": ""
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:7979/api/v1/beers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7979",
+					"path": [
+						"api",
+						"v1",
+						"beers"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Create Beer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6fdfe35d-a3f3-4b65-8783-4483f62117c8",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
-				"url": "http://localhost:7979/api/v1/beers",
 				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"name\": \"Colorado appia\",\n\t\"brand\": \"Colorado\",\n\t\"max\": 20,\n\t\"quantity\": 10,\n\t\"type\": \"LAGER\"\n}"
+					"raw": "    {\n        \"name\": \"Argentina: Quilmes\",\n        \"brand\": \"Quilmes\",\n        \"max\": 120,\n        \"quantity\": 12,\n        \"type\": \"ALE\"\n    }\n"
 				},
-				"description": ""
+				"url": {
+					"raw": "http://localhost:7979/api/v1/beers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7979",
+					"path": [
+						"api",
+						"v1",
+						"beers"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Get beer by name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "46e5d806-b047-4a4c-a52a-afb8d9ce4bc0",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
-				"url": "http://localhost:7979/api/v1/beers/Colorado appia",
 				"method": "GET",
 				"header": [],
-				"body": {},
-				"description": ""
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:7979/api/v1/beers/Argentina: Quilmes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7979",
+					"path": [
+						"api",
+						"v1",
+						"beers",
+						"Argentina: Quilmes"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Delete beer by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "00d257d5-7d6e-4f37-85dc-4d021da08869",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
-				"url": "http://localhost:7979/api/v1/beers/1",
 				"method": "DELETE",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
-				"body": {},
-				"description": ""
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:7979/api/v1/beers/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7979",
+					"path": [
+						"api",
+						"v1",
+						"beers",
+						"3"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Increment beer stock",
 			"request": {
-				"url": "http://localhost:7979/api/v1/beers/1/increment",
 				"method": "PATCH",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"quantity\": 2\n}"
 				},
-				"description": ""
+				"url": {
+					"raw": "http://localhost:7979/api/v1/beers/1/increment",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7979",
+					"path": [
+						"api",
+						"v1",
+						"beers",
+						"1",
+						"increment"
+					]
+				}
 			},
 			"response": []
 		},
 		{
 			"name": "Decrement beer stock",
 			"request": {
-				"url": "http://localhost:7979/api/v1/beers/1/decrement",
 				"method": "PATCH",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"quantity\": 2\n}"
 				},
-				"description": ""
+				"url": {
+					"raw": "http://localhost:7979/api/v1/beers/1/decrement",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7979",
+					"path": [
+						"api",
+						"v1",
+						"beers",
+						"1",
+						"decrement"
+					]
+				}
 			},
 			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "3553784a-3339-446e-8155-e16bb17e14a3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "03f774aa-bb26-4b81-98f7-688adce22ebe",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "ece24125-3d6b-40f2-b711-ecbfff215d6e",
+			"key": "protocol",
+			"value": "http://",
+			"type": "string"
+		},
+		{
+			"id": "80bf8342-0db7-42af-bdd9-60553be04b70",
+			"key": "host",
+			"value": "localhost",
+			"type": "string"
+		},
+		{
+			"id": "1c83e22c-ea00-4e34-8f1e-1b557abf649e",
+			"key": "port",
+			"value": "7979",
+			"type": "string"
+		},
+		{
+			"id": "f927cff4-edd1-4450-9bd7-699fc77ed1c9",
+			"key": "URL",
+			"value": "/api/v1/beers",
+			"type": "string"
 		}
 	]
 }
